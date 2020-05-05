@@ -8,17 +8,14 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-mongoose
-  .connect(
-    "mongodb+srv://max:" +
-      process.env.MONGO_ATLAS_PW +
-      "@cluster0-ntrwp.mongodb.net/node-angular"
-  )
-  .then(() => {
+mongoose.connect("mongodb+srv://zak:" +
+    process.env.MONGO_ATLAS_PW
+    + "@cluster0-pvnov.mongodb.net/node-angular?retryWrites=true&w=majority")
+    .then(() => {
     console.log("Connected to database!");
   })
-  .catch(() => {
-    console.log("Connection failed!");
+  .catch((error) => {
+    console.log(error);
   });
 
 app.use(bodyParser.json());
